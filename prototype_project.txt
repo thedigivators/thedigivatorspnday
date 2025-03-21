@@ -1,0 +1,4 @@
+prototype akan menggunakan library opencv
+ditampilkan (UI nya di streamlit)
+menggunakan esp32 cam module
+deadline 16 april 2025
