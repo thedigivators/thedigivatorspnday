@@ -64,8 +64,12 @@ while True:
         for r in results:
             boxes = r.boxes
         for box in boxes:
-            c = box.cls
-
+            class_id = int(box.cls[0])
+            if class_id == 67:
+                print("Kecurangan terdeteksi!")
+                terdeteksi += 1
+                file_name = f"data/handphone_terdeteksi{terdeteksi}.jpg"
+                cv2.imwrite(file_name, frame_result)
         cv2.imshow("Phone Detector", frame_result)
         key = cv2.waitKey(1)
 
