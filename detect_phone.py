@@ -43,10 +43,6 @@ if __name__ == '__main__':
 
 model = YOLO('yolov8n.pt')
 
-is_playing = False
-last_played_time = 0
-cooldown_period = 0.2  # Cooldown period in seconds
-
 while True:
     if video.isOpened():
         ret, frame = video.read()
@@ -70,6 +66,11 @@ while True:
                 terdeteksi += 1
                 file_name = f"data/handphone_terdeteksi{terdeteksi}.jpg"
                 cv2.imwrite(file_name, frame_result)
+                data = {"Terdeteksi handphone" : terdeteksi}
+                headers = {"Content-Type" : "application/json", "X-Auth-Token":"BBUS-Ubq4m0YjEKtSfJDfVolqxOOs2gZfoz"}
+                response = requests.post(UBIDOTS_ENDPOINT, json=data, headers=headers)
+                print(f"status pengiriman = {response.status_code}, {response.text}")
+
         cv2.imshow("Phone Detector", frame_result)
         key = cv2.waitKey(1)
 
