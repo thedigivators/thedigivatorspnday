@@ -1,7 +1,7 @@
 import streamlit as st
 import requests
 import google.generativeai as genai
-import FINAL.finalbgt
+import dashboard
 
 URL_esp32cam = "https://industrial.api.ubidots.com/api/v1.6/devices/esp32cam/terdeteksi-handphone/lv"
 gemini_api_key = "AIzaSyAOjm2SLbEonHsAHF94u_j0jpEX6VLhKl0"
