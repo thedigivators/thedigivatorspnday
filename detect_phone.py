@@ -41,7 +41,7 @@ def set_awb(url: str, awb: int=1):
 if __name__ == '__main__':
     set_resolution(URL, index=8)
 
-model = YOLO('yolov8n.pt')
+model = YOLO('yolov8m.pt')
 
 while True:
     if video.isOpened():
