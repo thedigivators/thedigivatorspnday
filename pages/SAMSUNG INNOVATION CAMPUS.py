@@ -3,6 +3,21 @@ import numpy as np
 import pandas as pd
 from datetime import time
 
+pages = {
+    "Our Product": [
+        st.Page("Dashboard-SIPANDAIHSC191.py", title="SIPANDAI"),
+        st.Page("pages/halamangenai.py", title="SIPANDAI SARAN"),
+        st.Page("pages/halamanlaporan.py", title="SIPANDAI LAPORAN")
+    ],
+    "About Us": [
+        st.Page("pages/SAMSUNG INNOVATION CAMPUS.py", title="Samsung Innovation Campus"),
+        st.Page("pages/thedigivators.py", title="The Digivators"),
+    ],
+}
+
+pg = st.navigation(pages)
+pg.run() 
+
 st.title("🎓 SAMSUNG INNOVATION CAMPUS")
 st.write("From HSC191-The Digivators-SMAN 1 Rejang Lebong")
 
