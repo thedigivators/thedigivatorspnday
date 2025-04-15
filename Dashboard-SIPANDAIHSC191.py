@@ -12,7 +12,10 @@ genai.configure(api_key=gemini_api_key)
 if "llm" not in st.session_state:
     st.session_state.llm = ""
 
-st.title("‼️‼SIPANDAI Deteksi aksi mencontek dengan AI❗")
+pages = {
+    "Our Product": [
+        st.Page("Dashboard-SIPANDAIHSC191.py", title="SIPANDAI")]}
+st.title("‼️SIPANDAI Deteksi aksi mencontek dengan AI❗")
 st.write("The Digivators-HSC191-SMAN1RL, SIC6. We born to gain & get not to be bad(🫸cheat)")
 
 col1, col2 = st.columns(2)
