@@ -12,7 +12,8 @@ genai.configure(api_key=gemini_api_key)
 if "llm" not in st.session_state:
     st.session_state.llm = ""
 
-st.title("SIPANDAI Deteksi contek dengan AI")
+st.title("SIPANDAI Deteksi contek dengan AI👌👌")
+st.write("The Digivators-HSC191-SMAN1RL, SIC6. We born to gain & get not to be bad(🫸cheat)")
 
 col1, col2 = st.columns(2)
 st.write(st.session_state.llm)
@@ -38,7 +39,7 @@ if st.button("Update"):
     st.session_state.llm = response.text
     col1.metric("Total Deteksi Handphone", f"{detection_value}")
 
-st.write("SIPANDAI")
+st.write("SIPANDAI bersama Kejujuran")
 
 data_df = pd.DataFrame(
     {
@@ -59,3 +60,5 @@ st.data_editor(
     },
     hide_index=True,
 )
+
+st.write("TheDigivators-HSC191-SIC6-SIPANDAI-SMAN1RL")
