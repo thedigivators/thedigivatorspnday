@@ -10,6 +10,11 @@ genai.configure(api_key=gemini_api_key)
 if "llm" not in st.session_state:
     st.session_state.llm = ""
 
+pages = {
+    "Our Product": [
+        st.Page("halamangenai.py", title="SIPANDAI SARAN")
+    ]
+}
 st.title("SIPANDAI SARAN")
 
 col1, col2 = st.columns(2)
