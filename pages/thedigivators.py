@@ -5,7 +5,7 @@ from datetime import time
 
 pages = {
     "About Us": [
-        st.Page("thedigivators.py", title="SIPANDAI")
+        st.Page("thedigivators.py", title="The Digivators")
     ]
 }
 st.title("🎓 SIPANDAI THE DIGIVATORS")
