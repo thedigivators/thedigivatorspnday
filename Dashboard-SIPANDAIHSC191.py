@@ -45,3 +45,17 @@ data_df = pd.DataFrame(
         "SIPANDAI": ["Mendeteksi dan identifikasi siswa yang melakukan kecurangan🤔", "Sensor mengambil gambar sebagai bukti👍", "Bukti akan muncul beserta notifikasi dengan suatu app yang dapat diakses guru pengawas👌", "Guru pengawas pula akan mendapatkan saran dari AI ketika mengakses data hasil kecurangan😎"],
     }
 )
+
+st.data_editor(
+    data_df,
+    column_config={
+        "SIPANDAI": st.column_config.TextColumn(
+            "SIPANDAI",
+            help="Menjadi **PANDAI** bersama **SIPANDAI**",
+            default="st.",
+            max_chars=50,
+            validate=r"^st\.[a-z_]+$",
+        )
+    },
+    hide_index=True,
+)
