@@ -36,3 +36,11 @@ if st.button("Update"):
     st.session_state.detection = detection_value
     st.session_state.llm = response.text
     col1.metric("Total Deteksi Handphone", f"{detection_value}")
+
+st.write("SIPANDAI")
+
+data_df = pd.DataFrame(
+    {
+        "SIPANDAI": ["Mendeteksi dan identifikasi siswa yang melakukan kecurangan🤔", "Sensor mengambil gambar sebagai bukti👍", "Bukti akan muncul beserta notifikasi dengan suatu app yang dapat diakses guru pengawas👌", "Guru pengawas pula akan mendapatkan saran dari AI ketika mengakses data hasil kecurangan😎"],
+    }
+)
