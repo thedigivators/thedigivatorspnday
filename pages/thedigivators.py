@@ -3,6 +3,11 @@ import numpy as np
 import pandas as pd
 from datetime import time
 
+pages = {
+    "About Us": [
+        st.Page("thedigivators.py", title="SIPANDAI")
+    ]
+}
 st.title("🎓 SIPANDAI THE DIGIVATORS")
 st.write("Pendeteksi kecurangan siswa ketika pengambilan penilaian by The Digivators")
 
