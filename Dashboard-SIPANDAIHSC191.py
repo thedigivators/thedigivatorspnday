@@ -29,7 +29,7 @@ pages = {
 }
 
 pg = st.navigation(pages)
-pg.run()
+
 
 st.title("‼️SIPANDAI Deteksi aksi mencontek dengan AI❗")
 st.write("The Digivators-HSC191-SMAN1RL, SIC6. We born to gain & get not to be bad(🫸cheat)")
