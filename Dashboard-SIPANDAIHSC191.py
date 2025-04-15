@@ -29,6 +29,7 @@ pages = {
 }
 
 pg = st.navigation(pages)
+pg.run() 
 
 
 st.title("‼️SIPANDAI Deteksi aksi mencontek dengan AI❗")
