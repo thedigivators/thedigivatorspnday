@@ -12,10 +12,6 @@ genai.configure(api_key=gemini_api_key)
 if "llm" not in st.session_state:
     st.session_state.llm = ""
 
-import streamlit as st
-
-import streamlit as st
-
 pages = {
     "Our Product": [
         st.Page("Dashboard-SIPANDAIHSC191.py", title="SIPANDAI"),
