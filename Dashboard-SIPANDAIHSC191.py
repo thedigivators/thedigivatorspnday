@@ -68,6 +68,3 @@ st.data_editor(
 )
 
 st.write("TheDigivators-HSC191-SIC6-SIPANDAI-SMAN1RL")
-
-pg = st.navigation(pages)
-pg.run()
