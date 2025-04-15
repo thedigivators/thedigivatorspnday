@@ -12,22 +12,6 @@ genai.configure(api_key=gemini_api_key)
 if "llm" not in st.session_state:
     st.session_state.llm = ""
 
-pages = {
-    "Our Product": [
-        st.Page("Dashboard-SIPANDAIHSC191.py", title="SIPANDAI"),
-        st.Page("pages/halamangenai.py", title="SIPANDAI SARAN"),
-        st.Page("pages/halamanlaporan.py", title="SIPANDAI LAPORAN")
-    ],
-    "About Us": [
-        st.Page("pages/SAMSUNG INNOVATION CAMPUS.py", title="Samsung Innovation Campus"),
-        st.Page("pages/thedigivators.py", title="The Digivators"),
-    ],
-}
-
-pg = st.navigation(pages)
-pg.run() 
-
-
 st.title("‼️SIPANDAI Deteksi aksi mencontek dengan AI❗")
 st.write("The Digivators-HSC191-SMAN1RL, SIC6. We born to gain & get not to be bad(🫸cheat)")
 
