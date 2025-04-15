@@ -14,19 +14,6 @@ if "llm" not in st.session_state:
 
 import streamlit as st
 
-pages = {
-    "Our Product": [
-        st.page("Dashboard-SIPANDAIHSC191.py", title="SIPANDAI"),
-        st.page("halamangenai.py", title="SIPANDAI Saran")
-  ],
-    "About Us": [
-        st.page("SAMSUNG INNOVATION CAMPUS.py", title="Samsung Innovation Campus"),
-        st.page("thedigivators.py", title="The Digivators"),
-    ],
-}
-
-pg = st.navigation(pages)
-pg.run()
 st.title("‼️SIPANDAI Deteksi aksi mencontek dengan AI❗")
 st.write("The Digivators-HSC191-SMAN1RL, SIC6. We born to gain & get not to be bad(🫸cheat)")
 
