@@ -14,7 +14,6 @@ if "llm" not in st.session_state:
 
 st.title("SIPANDAI Deteksi contek dengan AI👌👌")
 st.write("The Digivators-HSC191-SMAN1RL, SIC6. We born to gain & get not to be bad(🫸cheat)")
-st.image("images/honesty.jpg")
 
 col1, col2 = st.columns(2)
 st.write(st.session_state.llm)
