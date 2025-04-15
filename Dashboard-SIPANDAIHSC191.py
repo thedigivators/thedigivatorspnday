@@ -18,7 +18,7 @@ import streamlit as st
 
 pages = {
     "Our Product": [
-        st.Page("pages/Dashboard-SIPANDAIHSC191.py", title="SIPANDAI"),
+        st.Page("Dashboard-SIPANDAIHSC191.py", title="SIPANDAI"),
         st.Page("pages/halamangenai.py", title="SIPANDAI SARAN"),
         st.Page("pages/halamanlaporan.py", title="SIPANDAI LAPORAN")
     ],
