@@ -40,7 +40,7 @@ if st.button("Update"):
     col1.metric("Total Deteksi Handphone", f"{detection_value}")
 
 st.write("SIPANDAI bersama Kejujuran")
-st.image("images/honesty.jpg")
+st.image("images/urhonesty.jpg")
 
 data_df = pd.DataFrame(
     {
