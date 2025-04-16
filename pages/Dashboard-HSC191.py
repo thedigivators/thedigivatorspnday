@@ -1,8 +1,5 @@
 import streamlit as st
-import requests
-import google.generativeai as genai
-import pandas as pd
- 
+
 pages = {
     "Our Product": [
         st.Page("Dashboard-SIPANDAIHSC191.py", title="SIPANDAI"),
