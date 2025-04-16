@@ -8,7 +8,7 @@ pages = {
     ],
     "About Us": [
         st.Page("aboutsic.py", title="Samsung Innovation Campus"),
-        st.Page("thedigivators.py", title="The Digivators"),
+        #st.Page("thedigivators.py", title="The Digivators"),
     ],
 }
 
