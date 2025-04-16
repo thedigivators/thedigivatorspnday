@@ -14,7 +14,7 @@ if "llm" not in st.session_state:
     
 pages = {
     "Our Product": [
-        st.Page("pages/Dashboard-HSC191.py", title="SIPANDAI"),
+        st.Page("Dashboard-SIPANDAIHSC191.py", title="SIPANDAI"),
         st.Page("pages/halamanlaporan.py", title="SIPANDAI LAPORAN"),
         st.Page("pages/halamangenai.py", title="SIPANDAI SARAN")
     ],
