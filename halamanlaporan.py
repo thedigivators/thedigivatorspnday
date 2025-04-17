@@ -4,8 +4,8 @@ import google.generativeai as genai
 
 
 URL_esp32cam = "https://industrial.api.ubidots.com/api/v1.6/devices/esp32cam/terdeteksi-handphone/lv"
-gemini_api_key = "BBUS-L5TJHBNJc29LKKgDDXppr4d3jcyFbt"
-ubidots_api_key = "BBUS-Ubq4m0YjEKtSfJDfVolqxOOs2gZfoz"
+gemini_api_key = "AIzaSyAOjm2SLbEonHsAHF94u_j0jpEX6VLhKl0"
+ubidots_api_key = "BBUS-L5TJHBNJc29LKKgDDXppr4d3jcyFbt"
 model = genai.GenerativeModel("gemini-1.5-flash")
 genai.configure(api_key=gemini_api_key)
 
