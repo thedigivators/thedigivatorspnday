@@ -31,7 +31,7 @@ if st.button("Update"):
 
     prompt = f"""
     berdasarkan data, total deteksi handphone sebanyak = {detection_value} kali, pada ujian matematika dengan durasi 1 jam, menggunakan metode deteksi handphone dengan model YOLO
-    jumlah siswa dalam 1 ruangan 25 orang
+    jumlah siswa dalam 1 ruangan 25 orang. saat siswa melakukan kecurangan (handphone terdeteksi), program akan menangkap gambar dan menyimpannya ke dalam server sehingga bukti dapat ditunjukkan untuk tindak lanjut.
     berikan pendapat singkat anda tentang ruangan ini berdasarkan banyaknya total deteksi handphone.
     """
     response = model.generate_content(prompt)
