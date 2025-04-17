@@ -30,7 +30,7 @@ if st.button("Update"):
 
 
     prompt = f"""
-    berdasarkan data, total deteksi handphone sebanyak = {detection_value} kali.
+    berdasarkan data, total deteksi handphone sebanyak = {detection_value} kali, pada ujian matematika dengan durasi 1 jam, menggunakan metode deteksi handphone dengan model YOLO
     berikan pendapat anda tentang ruangan ini berdasarkan banyaknya anak yang mencontek.
     """
     response = model.generate_content(prompt)
