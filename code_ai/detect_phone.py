@@ -57,6 +57,8 @@ if __name__ == '__main__':
     set_resolution(URL, index=8)
 
 model = YOLO('yolov8m.pt')
+terdeteksi = 0
+UBIDOTS_ENDPOINT = f"http://industrial.api.ubidots.com/api/v1.6/devices/esp32cam/"
 
 while True:
     if video.isOpened():
