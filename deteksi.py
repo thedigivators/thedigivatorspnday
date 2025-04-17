@@ -30,10 +30,8 @@ if st.button("Update"):
 
 
     prompt = f"""
-    berdasarkan data anak yang mencontek = {detection_value} orang, mohon berilah saran kepada guru pengawas tentang ruang ujian ini...
-    "Kondisi ruangan ujian ini..."
-
-    berikan pendapat anda tentang ruangan ini berdasarkan banyaknya anak yang mencontek, serta beri saran singkat untuk guru pengawas
+    berdasarkan data, total deteksi handphone sebanyak = {detection_value} kali.
+    berikan pendapat anda tentang ruangan ini berdasarkan banyaknya anak yang mencontek.
     """
     response = model.generate_content(prompt)
 
