@@ -39,7 +39,7 @@ res = mqttc.connect()
 print("Hasil koneksi MQTT:", res)
 
 port = 1883
-topic = "/nay/notifikasi"
+topic = "iot/detect/handphone"
 
 
 def led_control (topic, msg):
