@@ -67,7 +67,7 @@ while True:
                 file_name = f"data/handphone_terdeteksi{terdeteksi}.jpg"
                 cv2.imwrite(file_name, frame_result)
                 data = {"Terdeteksi handphone" : terdeteksi}
-                headers = {"Content-Type" : "application/json", "X-Auth-Token":"BBUS-Ubq4m0YjEKtSfJDfVolqxOOs2gZfoz"}
+                headers = {"Content-Type" : "application/json", "X-Auth-Token":"BBUS-L5TJHBNJc29LKKgDDXppr4d3jcyFbt"}
                 response = requests.post(UBIDOTS_ENDPOINT, json=data, headers=headers)
                 print(f"status pengiriman = {response.status_code}, {response.text}")
 
