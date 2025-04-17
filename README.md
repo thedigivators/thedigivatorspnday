@@ -1,4 +1,4 @@
-SIPANDAI – Sistem Pendukung Deteksi Kecurangan Berbasis IoT dan AI
+SIPANDAI – Sistem Pendeteksi Kecurangan Berbasis IoT dan AI
 
 Nama Team : The Digivators
 Code Team : HSC191
