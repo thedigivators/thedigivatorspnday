@@ -3,21 +3,22 @@ import cv2
 import threading
 import requests
 from time import sleep, time
+import paho.mqtt.client as mqtt
 
 MQTT_BROKER = "broker.emqx.io"  
- MQTT_PORT = 1883                  
- MQTT_TOPIC = "iot/detect/handphone"      
- MQTT_CLIENT_ID = "iot_cam" 
+MQTT_PORT = 1883                  
+MQTT_TOPIC = "iot/detect/handphone"      
+MQTT_CLIENT_ID = "iot_cam" 
  
- mqtt_client = mqtt.Client(
-     client_id=MQTT_CLIENT_ID,
-     clean_session=True,
-     userdata=None,
-     protocol=mqtt.MQTTv311,
-     transport="tcp"
+mqtt_client = mqtt.Client(
+    client_id=MQTT_CLIENT_ID,
+    clean_session=True,
+    userdata=None,
+    protocol=mqtt.MQTTv311,
+    transport="tcp"
  )
- mqtt_client.connect(MQTT_BROKER, MQTT_PORT, keepalive=60)
- mqtt_client.loop_start() 
+mqtt_client.connect(MQTT_BROKER, MQTT_PORT, keepalive=60)
+mqtt_client.loop_start() 
 # ESP32 URL
 URL = "http://192.168.18.84"
 AWB = True
@@ -77,6 +78,7 @@ while True:
             class_id = int(box.cls[0])
             if class_id == 67:
                 print("Kecurangan terdeteksi!")
+                mqtt_client.publish(MQTT_TOPIC, "terdeteksi handphone, lampu dan buzzer dinyalakan!")
                 terdeteksi += 1
                 file_name = f"data/handphone_terdeteksi{terdeteksi}.jpg"
                 cv2.imwrite(file_name, frame_result)
@@ -84,7 +86,7 @@ while True:
                 headers = {"Content-Type" : "application/json", "X-Auth-Token":"BBUS-L5TJHBNJc29LKKgDDXppr4d3jcyFbt"}
                 response = requests.post(UBIDOTS_ENDPOINT, json=data, headers=headers)
                 print(f"status pengiriman = {response.status_code}, {response.text}")
-
+                
         cv2.imshow("Phone Detector", frame_result)
         key = cv2.waitKey(1)
 
