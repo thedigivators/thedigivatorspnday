@@ -1,3 +1,4 @@
+#kode untuk menghidupkan buzzer dan led saat cellphone terdeteksi
 from machine import Pin
 from machine import PWM
 import time
