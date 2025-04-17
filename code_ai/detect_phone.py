@@ -4,6 +4,20 @@ import threading
 import requests
 from time import sleep, time
 
+MQTT_BROKER = "broker.emqx.io"  
+ MQTT_PORT = 1883                  
+ MQTT_TOPIC = "iot/detect/handphone"      
+ MQTT_CLIENT_ID = "iot_cam" 
+ 
+ mqtt_client = mqtt.Client(
+     client_id=MQTT_CLIENT_ID,
+     clean_session=True,
+     userdata=None,
+     protocol=mqtt.MQTTv311,
+     transport="tcp"
+ )
+ mqtt_client.connect(MQTT_BROKER, MQTT_PORT, keepalive=60)
+ mqtt_client.loop_start() 
 # ESP32 URL
 URL = "http://192.168.18.84"
 AWB = True
