@@ -14,7 +14,7 @@ if "llm" not in st.session_state:
 
 
 
-st.title("‼️SIPANDAI Deteksi aksi mencontek dengan AI❗")
+st.title("SIPANDAI Deteksi Contek dengan AI")
 st.write("The Digivators-HSC191-SMAN1RL, SIC6. We born to gain & get not to be bad(🫸cheat)")
 
 col1, col2 = st.columns(2)
