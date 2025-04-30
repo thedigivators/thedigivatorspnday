@@ -41,4 +41,3 @@ if st.button("Buat Laporan Otomatis?"):
     """
     response = model.generate_content(prompt)
     st.session_state.llm = response.text
-    st.code(st.session_state, language="text")
