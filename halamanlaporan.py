@@ -40,6 +40,5 @@ if st.button("Buat Laporan Otomatis?"):
     anda akan menyusun surat laporan yang dapat digunakan langsung oleh guru pengawas (siap kirim)
     """
     response = model.generate_content(prompt)
-
-    with st.echo():
-        st.session_state.llm = response.text
+    st.session_state.llm = response.text
+    st.code(st.session_state, language="text")
