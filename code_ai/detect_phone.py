@@ -1,28 +1,21 @@
 from ultralytics import YOLO
 import cv2
-import threading
 import requests
 from time import sleep, time
 import paho.mqtt.client as mqtt
+             
+MQTT_TOPIC = "/nay/notifikasi"      
+MQTT_BROKER = "localhost"
+MQTT_PORT   = 1884
+mqtt_client = mqtt.Client("MQTT QLIENT PUBLISHER")
+mqtt_client.connect(MQTT_BROKER, MQTT_PORT)
+mqtt_client.loop_start()
 
-MQTT_BROKER = "broker.emqx.io"  
-MQTT_PORT = 1883                  
-MQTT_TOPIC = "iot/detect/handphone"      
-MQTT_CLIENT_ID = "iot_cam" 
- 
-mqtt_client = mqtt.Client(
-    client_id=MQTT_CLIENT_ID,
-    clean_session=True,
-    userdata=None,
-    protocol=mqtt.MQTTv311,
-    transport="tcp"
- )
-mqtt_client.connect(MQTT_BROKER, MQTT_PORT, keepalive=60)
-mqtt_client.loop_start() 
 # ESP32 URL
 URL = "http://192.168.18.84"
 AWB = True
 video = cv2.VideoCapture(URL + ":81/stream")
+# video = cv2.VideoCapture(0)
 
 def set_resolution(url: str, index: int=1, verbose: bool=False):
     try:
@@ -56,18 +49,13 @@ def set_awb(url: str, awb: int=1):
 if __name__ == '__main__':
     set_resolution(URL, index=8)
 
-model = YOLO('yolov8m.pt')
+model = YOLO('yolov8n.pt')
 terdeteksi = 0
 UBIDOTS_ENDPOINT = f"http://industrial.api.ubidots.com/api/v1.6/devices/esp32cam/"
 
+
 while True:
     if video.isOpened():
-        ret, frame = video.read()
-
-        if ret:
-            gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
-            gray = cv2.equalizeHist(gray)
-
         ret, frame = video.read()
         results = model.track(frame)
         frame_result = results[0].plot()
@@ -82,8 +70,19 @@ while True:
                 print("Kecurangan terdeteksi!")
                 mqtt_client.publish(MQTT_TOPIC, "terdeteksi handphone, lampu dan buzzer dinyalakan!")
                 terdeteksi += 1
+
                 file_name = f"data/handphone_terdeteksi{terdeteksi}.jpg"
                 cv2.imwrite(file_name, frame_result)
+
+
+                file_path = f"D:\\STAGE 3 SIC\\data\\handphone_terdeteksi{terdeteksi}.jpg"
+                files = {'photo' : open(file_path, 'rb')}
+                telegram_api_url = 'https://api.telegram.org/bot7946877244:AAE8b7b83O25JJ8A4MrHBP8r-58pDZWdBIg/sendPhoto'
+                params = {'chat_id': '-4651559197'}
+                resp = requests.post(telegram_api_url, params=params, files=files)
+                print(f"Status kirim Telegram: bukti gambar telah dikirim")
+    
+
                 data = {"Terdeteksi handphone" : terdeteksi}
                 headers = {"Content-Type" : "application/json", "X-Auth-Token":"BBUS-L5TJHBNJc29LKKgDDXppr4d3jcyFbt"}
                 response = requests.post(UBIDOTS_ENDPOINT, json=data, headers=headers)
@@ -106,6 +105,12 @@ while True:
         elif key == 27:
             break
 
+text = f"Sesi pemantauan ujian telah selesai. Sistem mendeteksi sebanyak {terdeteksi} bukti yang perlu ditinjau lebih lanjut. Silakan akses hasil lengkap melalui tautan berikut: https://digivatorssipandai.streamlit.app/ sebagai bahan evaluasi dan tindak lanjut."
+telegram_api_url = 'https://api.telegram.org/bot7946877244:AAE8b7b83O25JJ8A4MrHBP8r-58pDZWdBIg/sendMessage'
+params = {'chat_id': '-4651559197',
+          'text' : text}
+resp = requests.post(telegram_api_url, params=params)
+                     
 cv2.destroyAllWindows()
 video.release()
 
