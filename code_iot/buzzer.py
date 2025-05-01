@@ -1,24 +1,27 @@
 #kode untuk menghidupkan buzzer dan led saat cellphone terdeteksi
 from machine import Pin
 from machine import PWM
-import time
+from time import sleep
 import network
 from umqtt.simple import MQTTClient
 
-led = Pin(19, Pin.OUT)
-buzzer = PWM(Pin(4, Pin.OUT))
+red_led = Pin(5, Pin.OUT)
+green_led = Pin(2, Pin.OUT)
+buzzer = PWM(Pin(19, Pin.OUT))
 buzzer.init(freq=25, duty=0)
 
 def hidupkan_buzzer():
-    buzzer.init(freq=4186, duty=512)
+    buzzer.init(freq=1000, duty=1023)
     sleep(0.4)
     buzzer.duty(0)
     buzzer.deinit()
 
 def hidupkan_lampu():
-    led.on()
+    green_led.off()
+    red_led.on()
     sleep(0.4)
-    led.off()
+    red_led.off()
+    green_led.on()
 
 
 wlan = network.WLAN(network.STA_IF)
@@ -27,20 +30,9 @@ wlan.connect("Lahado", "AmbolaahRhss@**")
 
 while not wlan.isconnected():
     print(".", ends="")
+    red_led.on()
     
 print("wifi is connected")
-
-
-broker= "broker.emqx.io"
-client_name = "projectdigivatorshsc191"
-mqttc = MQTTClient (client_name, broker)
-
-res = mqttc.connect()
-print("Hasil koneksi MQTT:", res)
-
-port = 1883
-topic = "iot/detect/handphone"
-
 
 def led_control (topic, msg):
     payload = msg.decode().strip()
@@ -49,10 +41,19 @@ def led_control (topic, msg):
         hidupkan_lampu()
         hidupkan_buzzer()
     else:
-        led.off()  
+        led.off()
+        
+port = 1884
+topic = "/nay/notifikasi"
+broker= "192.168.18.185"
+client_name = "projectdigivatorshsc191"
+mqttc = MQTTClient(client_id=client_name, server = broker, port=port)
 
+mqttc.connect()
 mqttc.set_callback(led_control)
 mqttc.subscribe(topic)
+
+print("mqtt berhasil connect")
 
         
 while True:
