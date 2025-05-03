@@ -6,7 +6,7 @@ import network
 from umqtt.simple import MQTTClient
 
 red_led = Pin(5, Pin.OUT)
-green_led = Pin(2, Pin.OUT)
+green_led = Pin(23, Pin.OUT)
 buzzer = PWM(Pin(19, Pin.OUT))
 buzzer.init(freq=25, duty=0)
 
@@ -22,6 +22,7 @@ def hidupkan_lampu():
     sleep(0.4)
     red_led.off()
     green_led.on()
+    print("buzzer on")
 
 
 wlan = network.WLAN(network.STA_IF)
@@ -37,11 +38,12 @@ print("wifi is connected")
 def led_control (topic, msg):
     payload = msg.decode().strip()
     print("Pesan diterima dari topic:", topic, "dengan payload:", payload)
-    if payload == "terdeteksi handphone, lampu dan buzzer dinyalakan!":
+    
+    if payload == "terdeteksi kecurangan, lampu dan buzzer dinyalakan!":
         hidupkan_lampu()
         hidupkan_buzzer()
     else:
-        led.off()
+        red_led.off()
         
 port = 1884
 topic = "/nay/notifikasi"
@@ -60,8 +62,3 @@ while True:
     mqttc.check_msg()
     sleep(0.1)
     
-
-
-
-
-
