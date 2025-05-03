@@ -80,6 +80,28 @@ st.markdown("""
     </style>
 """, unsafe_allow_html=True)
 
+st.markdown("""
+    <style>
+    [data-testid="stMetric"] {
+        background-color: transparent;
+        color: white !important;
+    }
+
+    [data-testid="stMetric"] div {
+        color: white !important;
+    }
+
+    [data-testid="stMetricValue"] {
+        color: white !important;
+        font-weight: bold;
+    }
+
+    [data-testid="stMetricLabel"] {
+        color: #f0f0f0 !important;
+    }
+    </style>
+""", unsafe_allow_html=True)
+
 
 # Terapkan latar belakang
 set_bg_from_local("images/latarstreamlit.jpg")
