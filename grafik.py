@@ -169,7 +169,7 @@ st.markdown("""
 st.markdown("<h1 style='text-align: center; font-weight: 800;'>Grafik Deteksi Handphone per Jam</h1>", unsafe_allow_html=True)
 
 # Path ke file CSV (ganti sesuai lokasi kamu)
-csv_file_path = "D:/STAGE 3 SIC/database.csv"
+csv_file_path = "https://raw.githubusercontent.com/thedigivators/thedigivatorspnday/main/database.csv" 
 
 try:
     # Baca file CSV
