@@ -2,12 +2,13 @@ import streamlit as st
 
 pages = {
     "Our Product": [
-        st.Page("kabar.py", title="SIPANDAI"),
-        st.Page("halamangenai.py", title="SIPANDAI SARAN"),
-        st.Page("halamanlaporan.py", title="SIPANDAI LAPORAN"),
+        st.Page("kabar.py", title="SIPANDAI Kabar"),
+        st.Page("halamangenai.py", title="SIPANDAI Saran"),
+        st.Page("halamanlaporan.py", title="SIPANDAI Laporan"),
+        st.Page("grafik.py", title="SIPANDAI Riwayat"),
     ],
     "About Us": [
-        st.Page("aboutsipandai.py", title="Samsung Innovation Campus"),
+        st.Page("aboutsipandai.py", title="Tentang SIPANDAI"),
     ],
 }
 
