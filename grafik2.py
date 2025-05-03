@@ -10,7 +10,7 @@ DEVICE = "esp32cam"
 VARIABLE = "terdeteksi-handphone"
 
 # Fetch data from Ubidots
-url = f"https://industrial.api.ubidots.com/api/v1.6/devices/esp32cam/values"
+url = f"https://industrial.api.ubidots.com/api/v1.6/devices/esp32cam/terdeteksi-handphone/values"
 headers = {"X-Auth-Token": UBIDOTS_TOKEN}
 
 st.title("Grafik Real-Time dari Ubidots")
