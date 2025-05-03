@@ -96,9 +96,7 @@ if "llm" not in st.session_state:
     st.session_state.llm = ""
 
 
-
-st.title("SIPANDAI Deteksi Contek dengan AI")
-st.title("SIPANDAI Sistem Pendeteksi Contek dengan AI")
+st.title("SIPANDAI Sistem Pendeteksi Kecurangan Berbasis IoT dan AI")
 
 col1, col2 = st.columns(2)
 st.write(st.session_state.llm)
