@@ -169,6 +169,7 @@ gemini_api_key = "AIzaSyAOjm2SLbEonHsAHF94u_j0jpEX6VLhKl0"
 ubidots_api_key = "BBUS-L5TJHBNJc29LKKgDDXppr4d3jcyFbt"
 model = genai.GenerativeModel("gemini-1.5-flash")
 genai.configure(api_key=gemini_api_key)
+url = "https://t.me/+f_dmP2WPf2ZlODZl"
 
 if "llm" not in st.session_state:
     st.session_state.llm = ""
@@ -198,5 +199,11 @@ if st.button("Update"):
     st.session_state.llm = response.text
     with col1.container():
         st.metric("Total Deteksi Handphone", f"{st.session_state.get('detection', 0)}")
+    with col2.container():
+        if st.button("Dapatkan Bukti Real-Time disini!"):
+            st.markdown(f"[Klik di sini jika tidak diarahkan otomatis]({url})", unsafe_allow_html=True)
+            js = f"window.open('{url}')"  # Buka di tab baru
+            st.components.v1.html(f"<script>{js}</script>", height=0, scrolling=False)
+                
 
     
