@@ -195,7 +195,7 @@ if st.button("Update"):
     
     st.session_state.detection = detection_value
     st.session_state.llm = response.text
-   with col1.container():
-    st.metric("Total Deteksi Handphone", f"{st.session_state.get('detection', 0)}")
+    with col1.container():
+        st.metric("Total Deteksi Handphone", f"{st.session_state.get('detection', 0)}")
 
     
