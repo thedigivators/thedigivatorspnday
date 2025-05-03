@@ -174,7 +174,8 @@ if "llm" not in st.session_state:
     st.session_state.llm = ""
 
 
-st.title("SIPANDAI Sistem Pendeteksi Kecurangan Berbasis IoT dan AI")
+st.markdown("<h1 style='text-align: center; font-weight: 800;'>SIPANDAI Sistem Pendeteksi Kecurangan Berbasis IoT dan AI</h1>", unsafe_allow_html=True)
+
 
 col1, col2 = st.columns(2)
 st.write(st.session_state.llm)
