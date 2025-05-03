@@ -2,6 +2,7 @@ import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
 import base64
+import time  
 
 # HARUS PALING ATAS: Konfigurasi halaman
 st.set_page_config(page_title="Tentang SIPANDAI", layout="wide")
@@ -169,7 +170,8 @@ st.markdown("""
 st.markdown("<h1 style='text-align: center; font-weight: 800;'>Grafik Deteksi Handphone per Jam</h1>", unsafe_allow_html=True)
 
 # Path ke file CSV (ganti sesuai lokasi kamu)
-csv_file_path = "https://raw.githubusercontent.com/thedigivators/thedigivatorspnday/main/database.csv" 
+csv_file_path = f"https://raw.githubusercontent.com/thedigivators/thedigivatorspnday/main/database.csv?v={int(time.time())}"
+
 
 try:
     # Baca file CSV
