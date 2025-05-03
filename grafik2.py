@@ -1,36 +1,40 @@
-import streamlit as st
-import requests
-import pandas as pd
-import matplotlib.pyplot as plt
-import datetime
-
-# Konfigurasi
-UBIDOTS_TOKEN = "BBUS-L5TJHBNJc29LKKgDDXppr4d3jcyFbt"  # token kamu
-DEVICE = "esp32cam"
-VARIABLE = "terdeteksi-handphone"
-
-# Fetch data from Ubidots
-url = f"https://industrial.api.ubidots.com/api/v1.6/devices/esp32cam/terdeteksi-handphone/values"
-headers = {"X-Auth-Token": UBIDOTS_TOKEN}
-
-st.title("Grafik Real-Time dari Ubidots")
-
 try:
     response = requests.get(url, headers=headers)
-    data = response.json()["results"]
+    
+    # DEBUG: tampilkan status dan isi JSON
+    st.subheader("🔍 Debug Response")
+    st.write("Status code:", response.status_code)
+    st.json(response.json())
 
-    # Convert to DataFrame
+    # Cek jika response sukses
+    if response.status_code != 200:
+        st.error("❌ Request gagal. Periksa token, device, atau variable name.")
+        st.stop()
+
+    json_data = response.json()
+
+    # Cek apakah key 'results' ada
+    if "results" not in json_data:
+        st.error("⚠️ Data tidak ditemukan. Mungkin variabel salah atau belum ada data terkirim.")
+        st.stop()
+
+    # Lanjut jika aman
+    data = json_data["results"]
     df = pd.DataFrame(data)
+
+    if df.empty:
+        st.warning("⚠️ Tidak ada data deteksi yang tersedia saat ini.")
+        st.stop()
+
     df["timestamp"] = pd.to_datetime(df["timestamp"], unit="ms")
     df["jam"] = df["timestamp"].dt.strftime("%H")
 
-    # Hitung jumlah deteksi per jam
     jumlah_per_jam = df["jam"].value_counts().sort_index()
 
-    st.subheader("Tabel Data dari Ubidots")
+    st.subheader("📋 Tabel Data dari Ubidots")
     st.dataframe(df[["timestamp", "value", "jam"]])
 
-    st.subheader("Grafik Jumlah Deteksi per Jam")
+    st.subheader("📊 Grafik Jumlah Deteksi per Jam")
     fig, ax = plt.subplots()
     jumlah_per_jam.plot(kind="bar", ax=ax)
     ax.set_xlabel("Jam")
@@ -39,4 +43,4 @@ try:
     st.pyplot(fig)
 
 except Exception as e:
-    st.error(f"❌ Gagal mengambil data dari Ubidots: {e}")
+    st.error(f"❌ Terjadi error saat mengambil atau memproses data: {e}")
