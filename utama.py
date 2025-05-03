@@ -7,7 +7,7 @@ pages = {
         st.Page("halamanlaporan.py", title="SIPANDAI LAPORAN"),
     ],
     "About Us": [
-        st.Page("deteksi.py", title="Samsung Innovation Campus"),
+        st.Page("aboutsipandai.py", title="Samsung Innovation Campus"),
     ],
 }
 
