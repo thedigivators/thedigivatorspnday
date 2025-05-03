@@ -24,6 +24,62 @@ def set_bg_from_local(image_path):
         """,
         unsafe_allow_html=True
     )
+    
+# === Styling Tambahan ===
+st.markdown("""
+    <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap');
+
+    html, body, [data-testid="stApp"] {
+        font-family: 'Poppins', sans-serif;
+        color: white;
+    }
+
+    .report-container {
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 15px;
+        padding: 25px;
+        margin-top: 25px;
+        box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+    }
+
+    .main-title {
+        font-size: 2.5rem;
+        font-weight: 800;
+        margin-bottom: 0.5rem;
+        text-align: center;
+    }
+
+    .subtitle {
+        font-size: 1.2rem;
+        text-align: center;
+        margin-bottom: 2rem;
+        font-weight: 300;
+    }
+
+    .stButton button {
+        background-color: #ffffff10;
+        border: 1px solid #ffffff30;
+        border-radius: 8px;
+        padding: 10px 20px;
+        font-size: 1rem;
+        color: white;
+        font-weight: 600;
+        transition: all 0.3s ease;
+    }
+
+    .stButton button:hover {
+        background-color: #ffffff30;
+        transform: scale(1.02);
+    }
+
+    .llm-result {
+        font-size: 1.05rem;
+        line-height: 1.7;
+    }
+    </style>
+""", unsafe_allow_html=True)
+
 
 # Terapkan latar belakang
 set_bg_from_local("images/latarstreamlit.jpg")
