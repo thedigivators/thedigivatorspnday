@@ -3,6 +3,8 @@ import cv2
 import requests
 from time import sleep, time
 import paho.mqtt.client as mqtt
+import csv
+import datetime
              
 MQTT_TOPIC = "/nay/notifikasi"      
 MQTT_BROKER = "localhost"
@@ -14,8 +16,8 @@ mqtt_client.loop_start()
 # ESP32 URL
 URL = "http://192.168.18.84"
 AWB = True
-video = cv2.VideoCapture(URL + ":81/stream")
-# video = cv2.VideoCapture(0)
+# video = cv2.VideoCapture(URL + ":81/stream")
+video = cv2.VideoCapture(1)
 
 def set_resolution(url: str, index: int=1, verbose: bool=False):
     try:
@@ -46,13 +48,18 @@ def set_awb(url: str, awb: int=1):
         print("SET_QUALITY: something went wrong")
     return awb
 
-if __name__ == '__main__':
-    set_resolution(URL, index=8)
+# if __name__ == '__main__':
+#     set_resolution(URL, index=8)
 
 model = YOLO('yolov8n.pt')
 terdeteksi = 0
 UBIDOTS_ENDPOINT = f"http://industrial.api.ubidots.com/api/v1.6/devices/esp32cam/"
 
+database = "D:/STAGE 3 SIC/database.csv"
+
+# with open(database, "w", newline="") as file:
+#     writer = csv.writer(file)
+#     writer.writerow(["waktu", "jam"])
 
 while True:
     if video.isOpened():
@@ -68,7 +75,7 @@ while True:
             class_id = int(box.cls[0])
             if class_id == 67:
                 print("Kecurangan terdeteksi!")
-                mqtt_client.publish(MQTT_TOPIC, "terdeteksi handphone, lampu dan buzzer dinyalakan!")
+                mqtt_client.publish(MQTT_TOPIC, "terdeteksi kecurangan, lampu dan buzzer dinyalakan!")
                 terdeteksi += 1
 
                 file_name = f"data/handphone_terdeteksi{terdeteksi}.jpg"
@@ -78,7 +85,7 @@ while True:
                 file_path = f"D:\\STAGE 3 SIC\\data\\handphone_terdeteksi{terdeteksi}.jpg"
                 files = {'photo' : open(file_path, 'rb')}
                 telegram_api_url = 'https://api.telegram.org/bot7946877244:AAE8b7b83O25JJ8A4MrHBP8r-58pDZWdBIg/sendPhoto'
-                params = {'chat_id': '-4651559197'}
+                params = {'chat_id': '-4742720014'}
                 resp = requests.post(telegram_api_url, params=params, files=files)
                 print(f"Status kirim Telegram: bukti gambar telah dikirim")
     
@@ -87,6 +94,14 @@ while True:
                 headers = {"Content-Type" : "application/json", "X-Auth-Token":"BBUS-L5TJHBNJc29LKKgDDXppr4d3jcyFbt"}
                 response = requests.post(UBIDOTS_ENDPOINT, json=data, headers=headers)
                 print(f"status pengiriman = {response.status_code}, {response.text}")
+
+
+                with open(database, "a", newline="") as file:
+                    waktu = datetime.datetime.now()
+                    jam = waktu.strftime("%H")  
+                    writer = csv.writer(file)
+                    writer.writerow([waktu, jam])
+                            
                 
         cv2.imshow("Phone Detector", frame_result)
         key = cv2.waitKey(1)
@@ -107,7 +122,7 @@ while True:
 
 text = f"Sesi pemantauan ujian telah selesai. Sistem mendeteksi sebanyak {terdeteksi} bukti yang perlu ditinjau lebih lanjut. Silakan akses hasil lengkap melalui tautan berikut: https://digivatorssipandai.streamlit.app/ sebagai bahan evaluasi dan tindak lanjut."
 telegram_api_url = 'https://api.telegram.org/bot7946877244:AAE8b7b83O25JJ8A4MrHBP8r-58pDZWdBIg/sendMessage'
-params = {'chat_id': '-4651559197',
+params = {'chat_id': '-4742720014',
           'text' : text}
 resp = requests.post(telegram_api_url, params=params)
                      
