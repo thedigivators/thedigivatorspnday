@@ -200,7 +200,7 @@ if st.button("Update"):
     with col1.container():
         st.metric("Total Deteksi Handphone", f"{st.session_state.get('detection', 0)}")
     with col2.container():
-        st.link_button("📨 Lihat Bukti Real-Time di Telegram", "https://t.me/+f_dmP2WPf2ZlODZl")
+        st.link_button("Lihat Bukti Real-Time di Telegram", "https://t.me/+f_dmP2WPf2ZlODZl")
 
                 
 
