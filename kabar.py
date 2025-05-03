@@ -200,10 +200,8 @@ if st.button("Update"):
     with col1.container():
         st.metric("Total Deteksi Handphone", f"{st.session_state.get('detection', 0)}")
     with col2.container():
-        if st.button("Dapatkan Bukti Real-Time disini!"):
-            st.markdown(f"[Klik di sini jika tidak diarahkan otomatis]({url})", unsafe_allow_html=True)
-            js = f"window.open('{url}')"  # Buka di tab baru
-            st.components.v1.html(f"<script>{js}</script>", height=0, scrolling=False)
+        if st.link_button("📨 Lihat Bukti Real-Time di Telegram", "https://t.me/+f_dmP2WPf2ZlODZl")
+
                 
 
     
