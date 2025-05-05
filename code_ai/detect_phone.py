@@ -16,8 +16,8 @@ mqtt_client.loop_start()
 # ESP32 URL
 URL = "http://192.168.18.84"
 AWB = True
-# video = cv2.VideoCapture(URL + ":81/stream")
-video = cv2.VideoCapture(1)
+video = cv2.VideoCapture(URL + ":81/stream")
+
 
 def set_resolution(url: str, index: int=1, verbose: bool=False):
     try:
@@ -57,9 +57,9 @@ UBIDOTS_ENDPOINT = f"http://industrial.api.ubidots.com/api/v1.6/devices/esp32cam
 
 database = "D:/STAGE 3 SIC/database.csv"
 
-# with open(database, "w", newline="") as file:
-#     writer = csv.writer(file)
-#     writer.writerow(["waktu", "jam"])
+with open(database, "w", newline="") as file:
+    writer = csv.writer(file)
+    writer.writerow(["waktu", "jam"])
 
 while True:
     if video.isOpened():
