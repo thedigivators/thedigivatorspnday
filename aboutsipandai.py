@@ -85,7 +85,7 @@ st.markdown("""
 
 # Judul utama dan subjudul
 st.markdown('<div class="title">SIPANDAI</div>', unsafe_allow_html=True)
-st.markdown('<div class="subtitle">Sistem Pintar Anti Kecurangan Berbasis AI</div>', unsafe_allow_html=True)
+st.markdown('<div class="subtitle">Sistem Pendeteksi Kecurangan Berbasis IoT dan AI</div>', unsafe_allow_html=True)
 
 # Layout 2 kolom: logo dan deskripsi
 col1, col2 = st.columns([1, 2])
