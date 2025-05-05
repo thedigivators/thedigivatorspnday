@@ -85,7 +85,7 @@ while True:
                 file_path = f"D:\\STAGE 3 SIC\\data\\handphone_terdeteksi{terdeteksi}.jpg"
                 files = {'photo' : open(file_path, 'rb')}
                 telegram_api_url = 'https://api.telegram.org/bot7946877244:AAE8b7b83O25JJ8A4MrHBP8r-58pDZWdBIg/sendPhoto'
-                params = {'chat_id': '-4645669169'}
+                params = {'chat_id': '-1002479370703'}
                 resp = requests.post(telegram_api_url, params=params, files=files)
                 print(f"Status kirim Telegram: bukti gambar telah dikirim")
     
@@ -122,7 +122,7 @@ while True:
 
 text = f"Sesi pemantauan ujian telah selesai. Sistem mendeteksi sebanyak {terdeteksi} bukti yang perlu ditinjau lebih lanjut. Silakan akses hasil lengkap melalui tautan berikut: https://digivatorssipandai.streamlit.app/ sebagai bahan evaluasi dan tindak lanjut."
 telegram_api_url = 'https://api.telegram.org/bot7946877244:AAE8b7b83O25JJ8A4MrHBP8r-58pDZWdBIg/sendMessage'
-params = {'chat_id': '-4645669169',
+params = {'chat_id': '-1002479370703',
           'text' : text}
 resp = requests.post(telegram_api_url, params=params)
                      
